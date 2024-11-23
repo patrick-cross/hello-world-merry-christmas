@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Hello World</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #1a4a6e, #2c3e50);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .snowflake {
+            color: white;
+            position: absolute;
+            top: -20px;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .snowman {
+            font-size: 5em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Optional: Add a gentle bounce animation to the snowman */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .snowman {
+            animation: bounce 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎄 Hello World! 🎄</h1>
+        <div class="snowman">⛄</div>
+        <p>Merry Christmas!</p>
+    </div>
+
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
+            
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html> 
